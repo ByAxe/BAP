@@ -36,11 +36,16 @@ double calculateDiff(double Yx, double Sx);
 int main() {
 
     // 1)
-//    double x, y;
-//    puts("\n\t x,y = ");
-//    scanf("%lf %lf", &x, &y);
-//    double result = calculate(x, y);
-//    printf("Result: %lf", result);
+    const int n = 2;
+    double x;
+
+    puts("\n\t x = ");
+    scanf("%lf", &x);
+
+    struct Triple result = calculate(x, n);
+    printf("Result: \n\tS(x): \t\t\t%lf", result.Sx);
+    printf("\n\tY(x): \t\t\t%lf", result.Yx);
+    printf("\n\t|S(x)-Y(x)|: \t%lf", result.diff);
 
     // 2)
     test();
@@ -49,7 +54,7 @@ int main() {
 }
 
 void test() {
-    printf("\n\n********TEST*********\n");
+    printf("\n\n********TEST*********");
     boolean result = testCalculation();
     printf("\nTest passed: %s", result ? "Yes" : "No");
     printf("\n********TEST*********\n\n");
