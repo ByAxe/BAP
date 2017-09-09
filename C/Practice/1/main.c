@@ -2,6 +2,10 @@
 #include <math.h>
 #include <jmorecfg.h>
 
+#define INACCURACY 0.1
+
+boolean assertEquals(double actual, double expected);
+
 /**
  * Основные рассчеты по заданной формуле
  *
@@ -41,9 +45,7 @@ boolean testCalculation() {
 
     printf("Expected: %lf\nActual: %lf\n", expected, actual);
 
-    return (expected == actual)
-           || (expected - actual <= 0.1)
-           || (actual - expected <= 0.1);
+    return assertEquals(actual, expected);
 }
 
 
@@ -76,3 +78,16 @@ int main() {
     return 0;
 }
 
+/**
+ * Убеждаемся в равенстве ожидаемого и полученного значения
+ * С учетом погрешности рассчетов с использованием double
+ *
+ * @param actual
+ * @param expected
+ * @return
+ */
+boolean assertEquals(double actual, double expected) {
+    return (expected == actual)
+           || (expected - actual <= INACCURACY)
+           || (actual - expected <= INACCURACY);
+}
