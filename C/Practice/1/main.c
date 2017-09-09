@@ -10,15 +10,16 @@
  * @return
  */
 double calculate(double x, double y, double z) {
-    double part1, part2, part3, result, tg;
+    double top, bottom, minus, result, tg2;
 
-    part1 = pow((8 + pow(fabs(x - y), 2) + 1), 1 / 3);
-    part2 = pow(x, 2) + pow(y, 2) + 2;
+    top = pow((8 + pow(fabs(x - y), 2) + 1), 1 / 3);
 
-    tg = 1 / ((1 + cos(2 * z)) / 2);
-    part3 = exp(fabs(x - y)) * pow(tg + 1, x);
+    bottom = x * x + y * y + 2;
 
-    result = (part1 / part2) - part3;
+    tg2 = (1 - cos(2 * z)) / (1 + cos(2 * z));
+    minus = exp(fabs(x - y)) * pow(tg2 + 1, x);
+
+    result = (top / bottom) - minus;
 
     return result;
 }
@@ -29,15 +30,17 @@ double calculate(double x, double y, double z) {
  */
 boolean testCalculation() {
     double x = -4.5;
-    double y = 0.75 * pow(10, -4);
-    double z = 0.854 * pow(10, 2);
+    double y = 0.75e-4;
+    double z = 0.845e+2;
 
     double expected = -55.6848;
     double actual = calculate(x, y, z);
 
     printf("Expected: %lf\nActual: %lf\n", expected, actual);
 
-    return expected == actual;
+    return (expected == actual)
+           || (expected - actual <= 0.1)
+           || (actual - expected <= 0.1);
 }
 
 /**
@@ -51,7 +54,7 @@ int main() {
 //    scanf("%lf %lf %lf", &x, &y, &z);
 
     boolean result = testCalculation();
-    printf("Test passed: %s", result ? "Yes" : "No");
+    printf("\nTest passed: %s", result ? "Yes" : "No");
 
     return 0;
 }
