@@ -127,6 +127,6 @@ boolean testCalculation_secondBranch() {
  */
 boolean assertEquals(double actual, double expected) {
     return (expected == actual)
-           || (expected - actual <= INACCURACY)
-           || (actual - expected <= INACCURACY);
+           || (expected - actual <= INACCURACY && expected - actual > 0)
+           || (actual - expected <= INACCURACY && actual - expected > 0);
 }
