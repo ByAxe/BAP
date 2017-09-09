@@ -3,10 +3,11 @@
 #include <jmorecfg.h>
 
 /**
+ * Основные рассчеты по заданной формуле
  *
- * @param x
- * @param y
- * @param z
+ * @param x первая переменная
+ * @param y вторая переменная
+ * @param z третья переменная
  * @return
  */
 double calculate(double x, double y, double z) {
@@ -25,8 +26,10 @@ double calculate(double x, double y, double z) {
 }
 
 /**
+ * Тест
+ * Сверяет верность рассчетов метода calculate
  *
- * @return
+ * @return верно, или не верно
  */
 boolean testCalculation() {
     double x = -4.5;
@@ -43,18 +46,32 @@ boolean testCalculation() {
            || (actual - expected <= 0.1);
 }
 
+
+void test() {
+    printf("\n\n********TEST*********\n");
+    boolean result = testCalculation();
+    printf("\nTest passed: %s", result ? "Yes" : "No");
+    printf("\n********TEST*********\n\n");
+}
+
 /**
+ * Точка входа в программу.
+ * 1) Ввод данных пользователем
+ * 2) Тест в конце, для удостоверения что все работает хорошо
  *
  * @return
  */
 int main() {
 
-//    double x, y, z;
-//    puts("\n\t x,y,z = ");
-//    scanf("%lf %lf %lf", &x, &y, &z);
+    // 1)
+    double x, y, z;
+    puts("\n\t x,y,z = ");
+    scanf("%lf %lf %lf", &x, &y, &z);
+    double result = calculate(x, y, z);
+    printf("Result: %lf", result);
 
-    boolean result = testCalculation();
-    printf("\nTest passed: %s", result ? "Yes" : "No");
+    // 2)
+    test();
 
     return 0;
 }
