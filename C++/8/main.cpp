@@ -1,23 +1,23 @@
 using namespace std;
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <iomanip>
 
 typedef double (*uf)(double, int);
 
-void Tabl(double, double, double, uf);
+void Table(double, double, double, uf);
 
 double Y(double, int);
 
 int main() {
     cout << setw(8) << "x" << setw(15) << "y(x)" << setw(10) << endl;
-    Tabl(0.1, 1, 0.1, Y);
+    Table(0.1, 1, 0.1, Y);
     cout << endl;
     return 0;
 }
 
-void Tabl(double a, double b, double h, uf fun) {
+void Table(double a, double b, double h, uf fun) {
     int k = 0;
     double sum;
     for (double x = a; x < b + h / 2; x += h) {
