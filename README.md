@@ -1,2 +1,3 @@
 # BAP
-Basics of Algoritmisation and Programming. Practical works and etc. for university
+Лабораторные работы по предметам: Основы Программирования и Языки Программирования
+Везде выполнен вариант 2 из индивидуальных заданий
